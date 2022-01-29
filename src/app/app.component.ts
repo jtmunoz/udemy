@@ -6,10 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  length = 0;
   includeLetters = false;
   includeNumbers = false;
   includeSymbols = false;    
   password = '';
+
+  onChangeLength(value: string){
+    const parsedValue = parseInt(value);
+
+    if(!isNaN(parsedValue)){
+      this.length = parsedValue;
+    }
+  }
 
   onChangeUseLetters(){
     this.includeLetters = !this.includeLetters;
@@ -27,6 +36,12 @@ export class AppComponent {
     console.log(this.includeLetters);
     console.log(this.includeNumbers);
     console.log(this.includeSymbols);
+    console.log(`
+      About to generate a password with the followwing:
+      Includes Letters: ${this.includeLetters}
+      Includes Numbers: ${this.includeNumbers}
+      Includes Symbols: ${this.includeSymbols}
+    `)
     
     this.password = 'MY PASSWORD!!!';
   }
